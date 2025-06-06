@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>811 + Brooksource Golf Outing</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+  <div class="max-w-3xl mx-auto p-6">
+    <div class="flex justify-between items-center mb-6">
+      <img src="brooksource-logo.png" alt="Brooksource Logo" class="h-12" />
+      <img src="eight-eleven-logo.png" alt="Eight Eleven Logo" class="h-12" />
+    </div>
+    <h1 class="text-3xl font-bold mb-2">811 + Brooksource Golf Outing</h1>
+    <p class="mb-4 text-lg">Join us on <strong>September 19th</strong> at <strong>Western Lakes Golf Club</strong> in Pewaukee, WI.<br>
+    7:15am Registration • 8:00am Shotgun Start</p>
+
+    <div class="bg-white p-6 rounded-xl shadow-md mb-6">
+      <form id="golfForm" class="space-y-4">
+        <label class="block">
+          <span class="text-gray-700">Name</span>
+          <input type="text" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+        </label>
+        <label class="block">
+          <span class="text-gray-700">Email</span>
+          <input type="email" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+        </label>
+        <label class="block">
+          <span class="text-gray-700">Phone Number</span>
+          <input type="tel" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+        </label>
+        <label class="block">
+          <span class="text-gray-700">Registration Type</span>
+          <select id="typeSelect" class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+            <option value="individual">Individual ($75)</option>
+            <option value="foursome">Foursome ($250)</option>
+          </select>
+        </label>
+        <div id="foursomeFields" class="hidden">
+          <label class="block mt-2"><span class="text-gray-700">Golfer #2</span><input class="block w-full p-2 border rounded-md mt-1" /></label>
+          <label class="block mt-2"><span class="text-gray-700">Golfer #3</span><input class="block w-full p-2 border rounded-md mt-1" /></label>
+          <label class="block mt-2"><span class="text-gray-700">Golfer #4</span><input class="block w-full p-2 border rounded-md mt-1" /></label>
+        </div>
+
+        <div class="mt-4">
+          <a id="payLink" href="https://buy.stripe.com/test_3cIdR8dDW6VQeL5dkg87K00" target="_blank" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+            Register & Pay
+          </a>
+        </div>
+      </form>
+    </div>
+    <p class="text-sm text-gray-500 text-center">Hosted by Eight Eleven Group & Brooksource</p>
+  </div>
+
+  <script>
+    const typeSelect = document.getElementById("typeSelect");
+    const payLink = document.getElementById("payLink");
+    const foursomeFields = document.getElementById("foursomeFields");
+
+    typeSelect.addEventListener("change", function () {
+      if (this.value === "foursome") {
+        payLink.href = "https://buy.stripe.com/test_7sY6oG9nG93Y5avbc887K01";
+        foursomeFields.classList.remove("hidden");
+      } else {
+        payLink.href = "https://buy.stripe.com/test_3cIdR8dDW6VQeL5dkg87K00";
+        foursomeFields.classList.add("hidden");
+      }
+    });
+  </script>
+</body>
+</html>
