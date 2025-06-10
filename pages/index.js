@@ -1,80 +1,54 @@
-import Head from "next/head";
-import { useState } from "react";
-import styles from "../styles/Home.module.css";
+import Head from 'next/head';
+import styles from '../styles/Home.module.css';
 
 export default function Home() {
-  const [registrationType, setRegistrationType] = useState("individual");
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    golfer2: "",
-    golfer3: "",
-    golfer4: "",
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleRegistrationTypeChange = (e) => {
-    setRegistrationType(e.target.value);
-  };
-
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>811 Day of Service Golf Outing</title>
-        <meta name="description" content="Register for our charity golf outing!" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
       </Head>
-
-      <main className={styles.main}>
-        <img src="/brooksource-logo.png" alt="Brooksource Logo" className={styles.logo} />
-        <img src="/eight-eleven-logo.png" alt="Eight Eleven Logo" className={styles.logo} />
-        <h1 className={styles.title}>811 Day of Service Golf Outing</h1>
-        <p className={styles.description}>
-          Join us at <strong>Western Lakes Golf Club</strong> in Pewaukee on <strong>September 19th</strong>!
-          <br />
-          Shotgun start at <strong>8:00 AM</strong>, registration opens at <strong>7:15 AM</strong>.
-        </p>
-
-        <form className={styles.form}>
-          <label>
-            Name:
-            <input type="text" name="name" value={formData.name} onChange={handleChange} required />
-          </label>
-          <label>
-            Email:
-            <input type="email" name="email" value={formData.email} onChange={handleChange} required />
-          </label>
-          <label>
-            Registration Type:
-            <select name="registrationType" value={registrationType} onChange={handleRegistrationTypeChange}>
-              <option value="individual">Individual Golfer - $75</option>
-              <option value="foursome">Foursome - $250</option>
-            </select>
-          </label>
-          {registrationType === "foursome" && (
-            <>
-              <label>
-                Golfer #2:
-                <input type="text" name="golfer2" value={formData.golfer2} onChange={handleChange} />
-              </label>
-              <label>
-                Golfer #3:
-                <input type="text" name="golfer3" value={formData.golfer3} onChange={handleChange} />
-              </label>
-              <label>
-                Golfer #4:
-                <input type="text" name="golfer4" value={formData.golfer4} onChange={handleChange} />
-              </label>
-            </>
-          )}
-          <button type="submit">Submit</button>
-        </form>
+      <header className={styles.hero}>
+        <div className={styles.container}>
+          <div className={styles.logos}>
+            <img src="/assets/brooksource-logo-placeholder.png" alt="Brooksource Logo" className={styles.logo} />
+            <img src="/assets/eight-eleven-logo-placeholder.png" alt="Eight Eleven Logo" className={styles.logo} />
+          </div>
+          <h1>811 Day of Service Golf Outing</h1>
+          <p>Join us for a fun day on the green supporting Journey House!</p>
+          <a href="#register" className={styles.registerBtn}>Register Now</a>
+        </div>
+      </header>
+      <main className={styles.details}>
+        <div className={styles.container}>
+          <h2>Event Details</h2>
+          <div className={styles.eventInfo}>
+            <p><strong>Location:</strong> Western Lakes Golf Club, Pewaukee</p>
+            <p><strong>Date:</strong> August 11, 2025</p>
+            <p><strong>Schedule:</strong> 7:15 AM Registration | 8:00 AM Shotgun Start</p>
+          </div>
+          <h2>About the Cause</h2>
+          <p>
+            We’re proud to partner with <strong>Journey House</strong>, a Milwaukee-based organization
+            empowering families through education, youth development, and community engagement. All
+            proceeds from this event will support their mission.
+          </p>
+          <h2>Silent Auction</h2>
+          <p>
+            Don’t miss our <strong>silent auction</strong> featuring exclusive items and experiences! Bid
+            during the event to help raise funds for Journey House.
+          </p>
+          <a href="#register" className={styles.secondaryBtn}>Get Involved</a>
+        </div>
       </main>
-
       <footer className={styles.footer}>
-        <p>All proceeds benefit Journey House Milwaukee | Silent Auction on-site</p>
+        <div className={styles.container}>
+          <p>© 2025 811 Day of Service | Powered by Brooksource & Eight Eleven</p>
+        </div>
       </footer>
     </div>
   );
